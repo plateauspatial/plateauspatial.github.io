@@ -112,8 +112,6 @@ h1{
 
   h1{
 
-    /* same overall width but bolder */
-
     font-size:8.9vw;
 
     line-height:.92;
@@ -417,13 +415,24 @@ function frame(now){
 
   const t = now * 0.001;
 
-  mouse.x += (mouse.tx - mouse.x) * 0.035;
-  mouse.y += (mouse.ty - mouse.y) * 0.035;
+  const isMobile = W < 768;
+
+  const mouseEase =
+    isMobile
+      ? 0.018
+      : 0.035;
+
+  mouse.x += (mouse.tx - mouse.x) * mouseEase;
+  mouse.y += (mouse.ty - mouse.y) * mouseEase;
 
   cx.clearRect(0,0,W,H);
 
   const STEPS = 520;
-  const fieldRadius = W * 0.95;
+
+  const fieldRadius =
+    isMobile
+      ? W * 1.15
+      : W * 0.95;
 
   for(const def of SPLINES){
 
@@ -501,7 +510,11 @@ function frame(now){
         const force =
           falloff *
           directional *
-          90;
+          (
+            isMobile
+              ? 42
+              : 90
+          );
 
         px += nx * force;
         py += ny * force * 0.45;
