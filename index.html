@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Plateau Spatial</title>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,7 +17,8 @@
   box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
   width:100%;
   height:100%;
   overflow:hidden;
@@ -26,7 +30,9 @@ canvas{
   position:fixed;
   inset:0;
   display:block;
-  filter:blur(0.18px);
+  width:100%;
+  height:100%;
+  filter:blur(.18px);
 }
 
 .ui{
@@ -36,7 +42,6 @@ canvas{
   transform:translateY(-50%);
   width:50rem;
   z-index:2;
-  pointer-events:none;
 }
 
 h1{
@@ -66,7 +71,6 @@ h1{
   font-weight:300;
   color:#666;
   text-align:justify;
-  text-justify:inter-word;
 }
 
 .cta{
@@ -74,7 +78,6 @@ h1{
   display:flex;
   flex-direction:column;
   gap:.7rem;
-  align-items:flex-start;
 }
 
 .cta a{
@@ -82,12 +85,113 @@ h1{
   color:#222;
   text-decoration:none;
   border-bottom:1px solid #ddd;
+  width:max-content;
   padding-bottom:2px;
 }
 
 .loc{
   font-size:11px;
   color:#bbb;
+}
+
+/* ================= MOBILE VERSION ================= */
+
+@media (max-width:768px){
+
+  .ui{
+
+    left:8vw;
+    right:8vw;
+
+    width:auto;
+
+    top:11vh;
+
+    transform:none;
+  }
+
+  h1{
+
+    font-size:13.5vw;
+
+    line-height:.92;
+
+    letter-spacing:-0.05em;
+
+    white-space:nowrap;
+  }
+
+  .sub{
+
+    margin-top:1rem;
+
+    font-size:9px;
+
+    letter-spacing:.18em;
+  }
+
+  .desc{
+
+    width:72vw;
+    max-width:72vw;
+
+    margin-top:1.5rem;
+
+    font-size:12px;
+
+    line-height:1.85;
+  }
+
+  .cta{
+
+    margin-top:2.8rem;
+  }
+
+  .cta a{
+
+    font-size:11px;
+  }
+
+  .loc{
+
+    font-size:10px;
+  }
+
+  canvas{
+
+    transform:scale(1.08);
+
+    opacity:.96;
+  }
+
+}
+
+/* ================= SMALL PHONE ================= */
+
+@media (max-width:480px){
+
+  .ui{
+
+    top:10vh;
+  }
+
+  h1{
+
+    font-size:14vw;
+
+    letter-spacing:-0.055em;
+  }
+
+  .desc{
+
+    width:76vw;
+    max-width:76vw;
+
+    font-size:11.5px;
+
+    line-height:1.8;
+  }
+
 }
 
 </style>
@@ -133,21 +237,26 @@ const cv = document.getElementById('c');
 const cx = cv.getContext('2d');
 
 function resize(){
+
   cv.width = window.innerWidth;
   cv.height = window.innerHeight;
 }
 
 resize();
-window.addEventListener('resize', resize);
+
+window.addEventListener('resize',resize);
 
 const mouse = {
+
   x:-999,
   y:-999,
+
   tx:-999,
   ty:-999
 };
 
-window.addEventListener('mousemove', e => {
+window.addEventListener('mousemove',e=>{
+
   mouse.tx = e.clientX;
   mouse.ty = e.clientY;
 });
