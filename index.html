@@ -7,7 +7,7 @@
 
 <title>Plateau Spatial</title>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -32,7 +32,7 @@ canvas{
   display:block;
   width:100%;
   height:100%;
-  filter:blur(.18px);
+  filter:none;
 }
 
 .ui{
@@ -112,11 +112,15 @@ h1{
 
   h1{
 
-    font-size:9.6vw;
+    /* same overall width but bolder */
+
+    font-size:8.9vw;
 
     line-height:.92;
 
-    letter-spacing:-0.05em;
+    letter-spacing:-0.07em;
+
+    font-weight:700;
 
     white-space:nowrap;
   }
@@ -131,8 +135,6 @@ h1{
   }
 
   .desc{
-
-    /* reduced to 80% width */
 
     width:60.8vw;
     max-width:60.8vw;
@@ -163,9 +165,9 @@ h1{
 
   canvas{
 
-    transform:scale(1.08);
+    transform:none;
 
-    opacity:.96;
+    opacity:1;
   }
 
 }
@@ -181,9 +183,11 @@ h1{
 
   h1{
 
-    font-size:10vw;
+    font-size:9.2vw;
 
-    letter-spacing:-0.055em;
+    letter-spacing:-0.075em;
+
+    font-weight:700;
   }
 
   .sub{
